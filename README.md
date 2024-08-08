@@ -53,6 +53,6 @@ This project is a full-stack web application designed to provide AI-powered cust
 To start the development server:
 ```bash
 npm run dev
-
+```
 # Demo
 ![alt text](gpt-Bot.gif)
