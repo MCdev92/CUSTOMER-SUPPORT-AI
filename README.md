@@ -13,7 +13,6 @@ This project is a full-stack web application designed to provide AI-powered cust
 - npm or yarn
 - OpenAI API Key
 
-
 ### Setup
 
 1. **Clone the repository:**
