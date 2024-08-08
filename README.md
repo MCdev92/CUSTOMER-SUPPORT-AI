@@ -54,5 +54,15 @@ To start the development server:
 ```bash
 npm run dev
 ```
+## Areas of improvement
+1. Implement AWS Bedrock API to respond to users
+2. Implement RAG so the chabbot responds based on a given knowledge base
+3. Create an LLM orchestration pattern with a router and task specific models
+
+## Bonus 
+* Add multi-language support to cater to a diverse customer base
+* Add user authentication to personalize the chat experience
+* Implement a feedback mechanism for users to rate the chatbot's responses
+
 # Demo
 ![alt text](gpt-Bot.gif)
