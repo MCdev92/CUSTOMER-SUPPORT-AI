@@ -12,6 +12,17 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Divider } from '@mui/material';
+import { redirect } from 'next/navigation';
+import GoogleSignInButton from './components/auth/GoogleSignInButton';
+
+async function signInWithGoogle(){
+  try{
+    const result = await signInWithPopup(auth, googleProvider)
+    cookies.set("auth-token", await result.user.getIdToken())
+  } catch(error){
+    console.log(error)
+  }
+}
 
 function Copyright(props) {
   return (
@@ -26,7 +37,7 @@ function Copyright(props) {
   );
 }
 
-export default function SignInForm({handleSubmit,signInWithGoogle}) {
+export default function SignInForm({handleSubmit}) {
 
   return (
       <Container component="main" maxWidth="xs">
@@ -81,15 +92,7 @@ export default function SignInForm({handleSubmit,signInWithGoogle}) {
             <Divider>
               OR CONTINUE WITH
             </Divider>
-            <Button
-              type="button"
-              fullWidth
-              variant="contained"
-              onClick={signInWithGoogle}
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In With Google
-            </Button>
+            <GoogleSignInButton />
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
