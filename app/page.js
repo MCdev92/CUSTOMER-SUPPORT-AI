@@ -2,6 +2,7 @@
 import { Box, Stack, TextField, Button } from '@mui/material';
 import Image from "next/image";
 import { useState } from 'react';
+import Feedback from '@/components/feedback/Feedback'
 
 export default function Home() {
   const [messages, setMessages] = useState([{
@@ -13,7 +14,7 @@ export default function Home() {
 
   const sendMessage = async () => {
     setMessage('');
-    setMessages((messages) =>[
+    setMessages((messages) => [
       ...messages,
       { role: 'user', content: message },
       { role: 'assistant', content: '' },
@@ -23,17 +24,17 @@ export default function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify([...messages, {role: 'user', content: message}]),
+      body: JSON.stringify([...messages, { role: 'user', content: message }]),
     }).then(async (res) => {
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
 
       let result = '';
-      return reader.read().then(function processText({done, value}) {
+      return reader.read().then(function processText({ done, value }) {
         if (done) {
           return result;
         }
-        const text = decoder.decode(value || new Int8Array(), {stream: true});
+        const text = decoder.decode(value || new Int8Array(), { stream: true });
         setMessages((messages) => {
           let lastMessage = messages[messages.length - 1];
           let otherMessages = messages.slice(0, messages.length - 1);
@@ -102,7 +103,11 @@ export default function Home() {
               >
                 {message.content}
               </Box>
+              {message.role === 'assistant' && (
+                <Feedback response={message.content} messageId={index} />
+              )}
             </Box>
+
           ))}
         </Stack>
         <Stack direction="row" spacing={2}>
