@@ -13,10 +13,12 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.7",
     "@mui/material": "^5.16.6",
+    "firebase": "^10.12.5",
     "next": "14.2.5",
     "openai": "^4.55.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "universal-cookie": "^7.2.0"
   },
   "devDependencies": {
     "eslint": "^8",
